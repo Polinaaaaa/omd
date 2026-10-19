@@ -10,42 +10,42 @@ days = [
     {"day": "пт", "orders": 30, "revenue": 48_000, "returns": 3},
 ]
 
+def main():
+    sum_revenue = 0
+    for i in days:
+        sum_revenue += i["revenue"]
+        
+    ##Нужно найти:
+
+    ##- выручку за всю неделю
+
+    print(sum_revenue)
+    maximum = -1
+    for i in days:
+        if i["revenue"] > maximum:
+            maximum = i["revenue"] 
 
 
-sum_revenue = 0
-for i in days:
-    sum_revenue += i["revenue"]
-    
-##Нужно найти:
+    ##- день с самой большой выручкой
 
-##- выручку за всю неделю
+    print(maximum)
 
-print(sum_revenue)
-maximum = -1
-for i in days:
-    if i["revenue"] > maximum:
-        maximum = i["revenue"] 
+    average_revenue = {}
+    for i in days:
+        average_revenue[i["day"]] = i["revenue"]/i["orders"]
 
+    ##- среднюю выручку на один заказ в каждый день
 
-##- день с самой большой выручкой
+    print(average_revenue)
 
-print(maximum)
+    many_returns = []
+    for i in days:
+        if i["returns"] > 0.2*i["orders"]:
+            many_returns.append(i["day"])
 
-average_revenue = {}
-for i in days:
-    average_revenue[i["day"]] = i["revenue"]/i["orders"]
+    ##- дни, где возвратов больше 20% заказов
 
-##- среднюю выручку на один заказ в каждый день
+    print(many_returns)
 
-print(average_revenue)
-
-many_returns = []
-for i in days:
-    if i["returns"] > 0.2*i["orders"]:
-        many_returns.append(i["day"])
-
-##- дни, где возвратов больше 20% заказов
-
-print(many_returns)
-
-
+if __name__ == '__main__':
+    main()

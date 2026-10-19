@@ -13,31 +13,33 @@ queries = [
     "iphone",
 ]
 
+def main():
+    print(len(queries))
+    counts_queries = {}
+    unic_queries = list(queries)
+    for i in unic_queries:
+        counts_queries[i] = int(queries.count(i))
 
-print(len(queries))
-counts_queries = {}
-unic_queries = list(queries)
-for i in unic_queries:
-    counts_queries[i] = int(queries.count(i))
+    ##Нужно найти:
 
-##Нужно найти:
+    ##- сколько раз ввели каждый запрос
 
-##- сколько раз ввели каждый запрос
+    print(counts_queries)
 
-print(counts_queries)
+    ##- какой запрос вводили чаще всего
+    maximum = max(counts_queries, key = counts_queries.get)
+    print(maximum)
 
-##- какой запрос вводили чаще всего
-maximum = max(counts_queries, key = counts_queries.get)
-print(maximum)
+    ##- какую долю всех поисков он занимает
 
-##- какую долю всех поисков он занимает
+    print(counts_queries[maximum]/len(queries))
+    ones_queres = []
+    for i in counts_queries:
+        if counts_queries[i] == 1:
+            ones_queres.append(i)
 
-print(counts_queries[maximum]/len(queries))
-ones_queres = []
-for i in counts_queries:
-    if counts_queries[i] == 1:
-        ones_queres.append(i)
+    ##- какие запросы встретились один раз
 
-##- какие запросы встретились один раз
-
-print(ones_queres)
+    print(ones_queres)
+if __name__ == '__main__':
+    main()

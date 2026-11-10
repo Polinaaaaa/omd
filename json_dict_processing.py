@@ -1,3 +1,5 @@
+# функция поиска последнего элемента во вложенных словарях
+
 
 def extract_nested_value(obj, keys):
     obj_lowest = obj
@@ -7,6 +9,8 @@ def extract_nested_value(obj, keys):
         else:
             return None
     return obj_lowest
+
+# функция обработки словаря
 
 
 def process_dictionary_with_config(dictionary, config):
@@ -26,12 +30,16 @@ def process_dictionary_with_config(dictionary, config):
         ans[attribute] = extract_value
     return ans
 
+# функция обработки списка словарей
+
 
 def process_list_of_dicts_with_config(list_of_dicts, config):
     ans = []
     for i in list_of_dicts:
         ans.append(process_dictionary_with_config(i, config))
     return ans
+
+# функция создания процессора
 
 
 def create_processor(config, list_processor=False):
@@ -44,12 +52,16 @@ def create_processor(config, list_processor=False):
         return func(data, config)
     return process
 
+# функция обработки года
+
 
 def process_year(year_string):
     if not year_string:
         return None
     year_value = year_string.split('-')[0]
     return int(year_value)
+
+# проверка
 
 
 if __name__ == '__main__':
@@ -76,9 +88,11 @@ if __name__ == '__main__':
 
     # проверка, что все получилось (валидация)
 
-    assert process_dictionary_with_config(data_test, conf_test) == {'name': 'Polina Gavrilova', 'birth_year': 2004}
-    assert process_list_of_dicts_with_config(data_test_2, conf_test) == [{'name': 'Polina Gavrilova', 'birth_year': 2004},
-                                                                         {'name': 'Masha NeGavrilova', 'birth_year': 2005}]
+    assert process_dictionary_with_config(data_test, conf_test) == {
+        'name': 'Polina Gavrilova', 'birth_year': 2004}
+    assert process_list_of_dicts_with_config(data_test_2, conf_test) == [
+        {'name': 'Polina Gavrilova', 'birth_year': 2004},
+        {'name': 'Masha NeGavrilova', 'birth_year': 2005}]
 
     assert extract_nested_value(data_test,
                                 ['knownName', 'en']) == 'Polina Gavrilova'

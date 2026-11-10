@@ -1,3 +1,6 @@
+# функция группировки
+
+
 def group_by(data, feature):
     group_by = {}
     for i in data:
@@ -6,6 +9,8 @@ def group_by(data, feature):
             group_by[values] = []
         group_by[values].append(i)
     return group_by
+
+# функция раскрытия элемента-списка
 
 
 def expand_items(data, item):

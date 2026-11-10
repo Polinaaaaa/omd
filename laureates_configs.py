@@ -1,6 +1,9 @@
 from prizes_configs import prize_processor
 from json_dict_processing import create_processor, process_year
 
+# создаю клнфиги для записей организаций и людей
+
+
 config_person_f = {
     'id': ['id'],
     'name': (['knownName', 'en']),
@@ -21,6 +24,8 @@ config_org_f = {
     'prizes_relevant': (['nobelPrizes'], prize_processor())
 
 }
+
+# создаю процессоры
 
 
 def person_processor():

@@ -1,3 +1,6 @@
+# считаем пустые значения по всем полям
+
+
 def cnt_null(data):
     cnt_nulls = 0
     for row in data:
@@ -5,6 +8,8 @@ def cnt_null(data):
             if row[val] is None:
                 cnt_nulls += 1
     return cnt_nulls
+
+# считаем долю пропусков
 
 
 def cnt_share_null_feature(data):
@@ -20,11 +25,16 @@ def cnt_share_null_feature(data):
         cnt_nulls[val].append(cnt_nulls[val][1]/cnt_nulls[val][0])
     return [(val, cnt_nulls[val][1], cnt_nulls[val][2]) for val in cnt_nulls]
 
+# выводим год получения приза из даты
+
 
 def years_reward(data):
     all_prizes = data.get('prizes_relevant')
-    all_years = [i['award_year'] for i in all_prizes if i['award_year'] is not None]
+    all_years = [i['award_year'] for i in all_prizes if i['award_year']
+                 is not None]
     return all_years
+
+# функция для задания из второй части, анализ данных по id
 
 
 def id_checking(data):
@@ -43,6 +53,8 @@ def id_checking(data):
     return {'min_id': first_id['id'], 'min_id_dates': years_reward(first_id),
             'max_id': last_id['id'], 'max_id_dates': years_reward(last_id),
             'double_ids': double_ids}
+
+# функция для определения разницы между соседними значениями
 
 
 def gaps(data):
